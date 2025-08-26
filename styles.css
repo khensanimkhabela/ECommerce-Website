@@ -559,6 +559,11 @@ footer .copyright{
     text-align: center;
 }
 
+#pagination a:hover, 
+#pagination a.active{
+    color: black;
+}
+
 #pagination a{
     text-decoration: none;
     background-color: #efdab0;
@@ -574,7 +579,7 @@ footer .copyright{
 }
 
 
-/*Single Product*/
+/*Single Product Pages*/
 
 #prodetails{
     display: flex;
@@ -635,6 +640,97 @@ footer .copyright{
     background: #efdab0;
     color: white;
 }
+
+
+/*Gallery Page*/
+#page-header{ 
+    width: 100%;
+    height: 40vh;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    padding: 14px;
+}
+
+#page-header h2,
+#page-header p{
+    color: #fff;
+}
+
+#page-header.blog-header{
+    background-image: url("img/banner/b19.jpg");
+}
+
+#gallery{
+    padding:150px 150px 0 150px ;
+}
+
+#gallery .gallery-box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding-bottom: 90px ;
+}
+
+#gallery .gallery-img{
+    width: 50%;
+    margin-right: 40px;
+}
+
+#gallery img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+#gallery .gallery-details{
+    width: 50%;
+}
+
+#gallery .gallery-details a{
+    text-decoration: none;
+    font-size: 14px;
+    color: black;
+    font-weight: 700;
+    position: relative;
+    transition: 0.3s;
+}
+
+#gallery .gallery-details a::after{
+    content:"";
+    width: 50px;
+    height: 1px;
+    background-color: black;
+    position: absolute;
+    top: 4px;
+    right: -60px;
+}
+
+#gallery .gallery-details a:hover{
+    color: #efdab0;
+}
+
+#gallery .gallery-details a:hover::after{
+    background-color: #efdab0;
+}
+
+#gallery .gallery-box h1{
+    position: absolute;
+    top: -40px;
+    left: 0;
+    font-size: 70px;
+    font-weight: 700;
+    color: #c9cbce;
+    z-index: -9;
+}
+    
+
+
+
+
 
 
 
