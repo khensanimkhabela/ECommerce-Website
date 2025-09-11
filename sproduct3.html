@@ -31,12 +31,12 @@
 
     <section id="prodetails" class="section-p1">
        <div class="single-pro-image">
-           <img src="img/products/cake.jpg" width="100%" id="MainImg" alt=""> 
+           <img src="img/products/Donut.jpg" width="100%" id="MainImg" alt=""> 
        </div>
        <div class="single-pro-details">
-        <h6>Home/Cake</h6>
-        <h4>Angel Chocolate Cake</h4>
-        <h2>R100</h2>
+        <h6>Home/Donuts</h6>
+        <h4>Choc Nut Donut</h4>
+        <h2>R30</h2>
         <select id="sizeSelector">
             <option>Select Size</option>
             <option>Small</option>
@@ -46,7 +46,7 @@
         <input id="quantitySelector" type="number" value="1">
         <button class="normal" id="cartButton">Add To Cart</button>
         <h4>Product Details</h4>
-        <span>Tiramisu-inspired chocolate cream cake, featuring a rich chocolate base topped with alternating layers of light sponge cake and creamy mascarpone or whipped cream. The top is dusted generously with cocoa powder, adding a subtle bitterness that balances the sweetness of the cream. Its smooth, creamy texture combined with the moist chocolate foundation makes it ideal for dessert lovers, dinner parties, or anyone with an eye for food photography.</span>
+        <span>A rich chocolate-glazed donut topped with crunchy roasted nuts and colorful candy sprinkles. Soft, indulgent, and perfect for sweet cravings any time of day.</span>
        </div> 
        <div id="popupMessage" class="hidden">Product added to cart!</div>
     </section>
@@ -195,12 +195,12 @@
     </footer>
 
     <script>document.getElementById("cartButton").addEventListener("click", function (){
-    const product = {
-    name: "Angel Chocolate Cake",
-    price: 100,
+   const product = {
+    name: "Choc Nut Donut",
+    price: 30,
     quantity: parseInt(document.getElementById("quantitySelector").value),
     size: document.getElementById("sizeSelector").value,
-    image: "img/products/cake.jpg" 
+    image: "img/products/Donut.jpg" 
    };
 
    let cart = JSON.parse(localStorage.getItem("cart")) || [];

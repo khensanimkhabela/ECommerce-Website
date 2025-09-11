@@ -31,12 +31,12 @@
 
     <section id="prodetails" class="section-p1">
        <div class="single-pro-image">
-           <img src="img/products/cake.jpg" width="100%" id="MainImg" alt=""> 
+           <img src="img/products/Cookies.jpg" width="100%" id="MainImg" alt="">
        </div>
        <div class="single-pro-details">
-        <h6>Home/Cake</h6>
-        <h4>Angel Chocolate Cake</h4>
-        <h2>R100</h2>
+        <h6>Home/Cookies</h6>
+        <h4>Peanut Butter Cookies</h4>
+        <h2>R55</h2>
         <select id="sizeSelector">
             <option>Select Size</option>
             <option>Small</option>
@@ -46,9 +46,9 @@
         <input id="quantitySelector" type="number" value="1">
         <button class="normal" id="cartButton">Add To Cart</button>
         <h4>Product Details</h4>
-        <span>Tiramisu-inspired chocolate cream cake, featuring a rich chocolate base topped with alternating layers of light sponge cake and creamy mascarpone or whipped cream. The top is dusted generously with cocoa powder, adding a subtle bitterness that balances the sweetness of the cream. Its smooth, creamy texture combined with the moist chocolate foundation makes it ideal for dessert lovers, dinner parties, or anyone with an eye for food photography.</span>
-       </div> 
-       <div id="popupMessage" class="hidden">Product added to cart!</div>
+        <span>peanut butter cookies are the perfect balance of sweet, salty, and nutty. With a golden-brown exterior and a soft, melt-in-your-mouth center, each cookie is packed with rich peanut flavor and a hint of vanilla warmth. Ideal for snack time, gifting, or pairing with a hot drink.</span>
+       </div>
+       <div id="popupMessage" class="hidden">Product added to cart!</div> 
     </section>
 
     <section id="product1" class="section-p1">
@@ -194,21 +194,22 @@
 
     </footer>
 
-    <script>document.getElementById("cartButton").addEventListener("click", function (){
-    const product = {
-    name: "Angel Chocolate Cake",
-    price: 100,
-    quantity: parseInt(document.getElementById("quantitySelector").value),
-    size: document.getElementById("sizeSelector").value,
-    image: "img/products/cake.jpg" 
-   };
+    <script>
+        document.getElementById("cartButton").addEventListener("click", function (){
+        const product = {
+        name: "Peanut Butter Cookies",
+        price: 55,
+        quantity: parseInt(document.getElementById("quantitySelector").value),
+        size: document.getElementById("sizeSelector").value,
+        image: "img/products/Cookies.jpg" 
+        };
 
-   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-   cart.push(product);
-   localStorage.setItem("cart", JSON.stringify(cart));
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(cart));
 
-   //window.location.href= "cart.html"//
-});
+       //window.location.href= "cart.html"//
+       });
     </script>
 
     <script>
@@ -219,8 +220,8 @@
     </script>
 
     <script src="cart.js"></script>
-
     <script src="popup.js"></script>
+    <script src="miniscreen.js"></script>
 
     <script src ="script.js"></script>
 </body>
