@@ -11,7 +11,11 @@ window.addEventListener("DOMContentLoaded", () => {
     //Current promo codes applicable
     const promoCodes = {
         "SAVE10": 0.10, // 10% off
-        "SAVE50": 0.50  // 50% off
+        "SAVE50": 0.50,  // 50% off
+        "KHENSANI": 0.35,  //35% off
+        "BETHU": 0.20, //20% off
+        "STUDENT": 0.05 //5% off
+        
     };
 
 
