@@ -19,7 +19,7 @@
                <li> <a href="gallery.html">Gallery</a></li>
                <li> <a href="about.html">About</a></li>
                <li> <a href="contact.html">Contact</a></li>
-               <li id="lg-bag"> <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+               <li id="lg-bag"> <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i><span id="cart-count" class="cart-count">0</span></a></li>
                <a href="#" id="close"> <i class="far fa-times"></i></a> 
             </ul>
         </div>
@@ -194,7 +194,17 @@
 
     </footer>
 
-    <script>document.getElementById("cartButton").addEventListener("click", function (){
+    <script>
+        function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let total = 0;
+        cart.forEach(item => {
+        total += item.quantity;
+    });
+    document.getElementById("cart-count").textContent = total;
+    }
+     updateCartCount();
+    document.getElementById("cartButton").addEventListener("click", function (){
    const product = {
     name: "Choc Nut Donut",
     price: 30,
@@ -206,6 +216,7 @@
    let cart = JSON.parse(localStorage.getItem("cart")) || [];
    cart.push(product);
    localStorage.setItem("cart", JSON.stringify(cart));
+   updateCartCount();
 
    //window.location.href= "cart.html"//
 });

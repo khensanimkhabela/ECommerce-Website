@@ -19,7 +19,7 @@
                <li> <a href="gallery.html">Gallery</a></li>
                <li> <a href="about.html">About</a></li>
                <li> <a href="contact.html">Contact</a></li>
-               <li id="lg-bag"> <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+               <li id="lg-bag"> <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i><span id="cart-count" class="cart-count">0</span></a></li>
                <a href="#" id="close"> <i class="far fa-times"></i></a> 
             </ul>
         </div>
@@ -28,6 +28,46 @@
             <i id="bar" class="fas fa-outdent"></i>
         </div>
     </section>
+
+    <section id="form-details">
+        <form action="">
+            
+            <h2>Events & Catering Services</h2>
+            <input type="text" placeholder="Name">
+            <input type="text" placeholder="E-mail">
+            <select id="ServiceSelector">
+            <option>Type Of Catering</option>
+            <option>Drop-off Catering</option>
+            <option>Full-Service Catering</option>
+            <option>DIY Kits</option>
+            <option>Corporate Gifting</option>
+            <option>Seasonal menu</option>
+        </select>
+            <textarea name="" id="" cols="30" rows="10" placeholder="Your Request"></textarea>
+            <button id="submit" class="normal">Submit</button>
+        </form>
+    </section>
+
+    <script>
+        const confirm = document.getElementById('submit');
+        confirm.addEventListener("click", (event) => {
+            event.preventDefault();
+            const name = document.querySelector('input[placeholder="Name"]').value;
+            alert(`Thank You ${name} For Sending Your Request. We will contact you soon.`);
+        });
+    </script>
+
+    <script>
+        function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let total = 0;
+        cart.forEach(item => {
+        total += item.quantity;
+    });
+    document.getElementById("cart-count").textContent = total;
+    }
+     updateCartCount();
+    </script>
 
     
 </body>

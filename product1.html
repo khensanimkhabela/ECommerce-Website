@@ -31,22 +31,22 @@
 
     <section id="prodetails" class="section-p1">
        <div class="single-pro-image">
-           <img src="img/products/quinches.jpg" width="100%" id="MainImg" alt=""> 
+           <img src="img/products/Scones2.jpg" width="100%" id="MainImg" alt=""> 
        </div>
        <div class="single-pro-details">
-        <h6>Home/Quiche</h6>
-        <h4>Caramelized Quiche Lorraine</h4>
-        <h2>R107</h2>
+        <h6>Home/Scones</h6>
+        <h4>Hazelnut Scones</h4>
+        <h2>R54</h2>
         <select id="sizeSelector">
-            <option>Select Size</option>
-            <option>Quarter Slice</option>
-            <option>Half</option>
-            <option>Full</option>
+            <option>Add-Ons</option>
+            <option>Chocolate Drizzle</option>
+            <option>Clotted Cream</option>
+            <option>Honey Butter</option>
         </select>
         <input id="quantitySelector" type="number" value="1">
         <button class="normal" id="cartButton">Add To Cart</button>
         <h4>Product Details</h4>
-        <span>A savory tart filled with smoky bacon, caramelized onions, and creamy egg custard, baked in a buttery golden crust. Rich, comforting, and perfectly balanced with hints of nutmeg and melted cheese. Ideal for brunch, lunch, or a gourmet grab-and-go meal</span>
+        <span>Golden-brown scones with a crisp crust and soft, buttery interior, studded with roasted hazelnuts for a rich, nutty flavor. Lightly sweetened and dusted with flour, they pair perfectly with tea, coffee, or fruit preserves.Available fresh daily or in pre-packed sets.A batch of 6 scones with optional add-ons: chocolate drizzle, clotted cream, or honey butter.</span>
        </div> 
        <div id="popupMessage" class="hidden">Product added to cart!</div>
     </section>
@@ -194,33 +194,21 @@
 
     </footer>
 
-    <script>
-        function updateCartCount() {
-        const cart = JSON.parse(localStorage.getItem("cart")) || [];
-        let total = 0;
-        cart.forEach(item => {
-        total += item.quantity;
-    });
-    document.getElementById("cart-count").textContent = total;
-    }
-     updateCartCount();
+    <script>document.getElementById("cartButton").addEventListener("click", function (){
+    const product = {
+    name: "Hazelnut Scones",
+    price: 54,
+    quantity: parseInt(document.getElementById("quantitySelector").value),
+    size: document.getElementById("sizeSelector").value,
+    image: "img/products/Scones2.jpg" 
+   };
 
-       document.getElementById("cartButton").addEventListener("click", function (){
-       const product = {
-       name: "Caramelized Quiche Lorraine",
-       price: 107,
-       quantity: parseInt(document.getElementById("quantitySelector").value),
-       size: document.getElementById("sizeSelector").value,
-       image: "img/products/quinches.jpg" 
-       };
+   let cart = JSON.parse(localStorage.getItem("cart")) || [];
+   cart.push(product);
+   localStorage.setItem("cart", JSON.stringify(cart));
 
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push(product);
-      localStorage.setItem("cart", JSON.stringify(cart));
-        updateCartCount();
-
-      //window.location.href= "cart.html"//
-      });
+   //window.location.href= "cart.html"//
+});
     </script>
 
     <script>
@@ -235,4 +223,16 @@
     <script src="popup.js"></script>
 
     <script src ="script.js"></script>
+
+    <script>
+        function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let total = 0;
+        cart.forEach(item => {
+        total += item.quantity;
+    });
+    document.getElementById("cart-count").textContent = total;
+    }
+     updateCartCount();
+    </script>
 </body>

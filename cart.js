@@ -19,6 +19,16 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
 
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let total = 0;
+        cart.forEach(item => {
+        total += item.quantity;
+    });
+    document.getElementById("cart-count").textContent = total;
+    }
+
+
 
     // Function to render cart rows
     function renderCart() {
@@ -51,6 +61,7 @@ window.addEventListener("DOMContentLoaded", () => {
         // Update totals
         subtotalCell.textContent = `R${total.toFixed(2)}`;
         totalCell.textContent = `R${total.toFixed(2)}`; // Add shipping if needed
+        updateCartCount();
     }
 
     // Handle quantity changes
@@ -60,6 +71,7 @@ window.addEventListener("DOMContentLoaded", () => {
             cart[index].quantity = parseInt(e.target.value);
             localStorage.setItem("cart", JSON.stringify(cart));
             renderCart();
+            updateCartCount();
         }
     });
 
@@ -71,6 +83,7 @@ window.addEventListener("DOMContentLoaded", () => {
             cart.splice(index, 1);
             localStorage.setItem("cart", JSON.stringify(cart));
             renderCart();
+            updateCartCount();
         }
     });
 
@@ -85,9 +98,12 @@ window.addEventListener("DOMContentLoaded", () => {
             alert("Invalid promo code");
         }
         renderCart();
+        updateCartCount();
     });
 
 
-
+    
+     
     renderCart();
+    updateCartCount();
 });

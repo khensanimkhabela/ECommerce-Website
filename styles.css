@@ -6,6 +6,14 @@
     font-family: 'Spartan', sans-serif;
 }
 
+@keyframes bounce-off {
+    0%   { transform: scale(1) translateY(0);}
+    30%  { transform: scale(1.05) translateY(-10px);}
+    50%  { transform: scale(0.97) translateY(5px);}
+    70%  { transform: scale(1.02) translateY(-4px);}
+    100% { transform: scale(1) translateY(0);}
+}
+
 h1 {
     font-size: 50px ;
     line-height: 64px;
@@ -100,6 +108,30 @@ body{
 
 }
 
+#navbar li div{
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    transition: 0.3s ease;
+}
+
+#navbar li div:hover,
+#navbar li div.active{
+    color: black;
+}
+
+#navbar li div.active::after,
+#navbar li div:hover::after{
+    content: "";
+    width: 30%;
+    height: 2px;
+    background: black;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+
 #navbar li a{
     text-decoration: none;
     font-size: 16px;
@@ -125,6 +157,13 @@ body{
     left: 20px;
 
 }
+
+.dropdown-menu{
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .4s ease-out;
+}
+
 
 #mobile {
     display: none;
@@ -253,7 +292,8 @@ body{
 }
 
 #product1 .pro:hover{
-    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06) ;
+    animation: bounce-off 0.5s;
+    box-shadow: 100px 100px 100px rgba(0, 0, 0, 0.06) ;
 }
 
 #product1 .pro img{
@@ -824,6 +864,7 @@ footer .copyright{
 }
 
 #form-details form input,
+#form-details form select,
 #form-details form textarea{
     width: 100%;
     padding: 12px 15px;
@@ -866,6 +907,16 @@ footer .copyright{
 
 
 /*Cart Page*/
+.cart-count {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  background: black;
+  color: #fff;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 12px;
+}
 
 #cart table{
     width: 100%;

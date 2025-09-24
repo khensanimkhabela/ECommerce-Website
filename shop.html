@@ -19,7 +19,7 @@
                <li> <a href="gallery.html">Gallery</a></li>
                <li> <a href="about.html">About</a></li>
                <li> <a href="contact.html">Contact</a></li>
-               <li id="lg-bag"> <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a></li>
+               <li id="lg-bag"> <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i><span id="cart-count" class="cart-count">0</span></a></li>
                <a href="#" id="close"> <i class="far fa-times"></i></a> 
             </ul>
         </div>
@@ -33,10 +33,10 @@
         <h2>Our Treats</h2>
         <div class="pro-container">
             <div class="pro" onclick="window.location.href='sproduct.html';">
-                <img src="img/products/cake.jpg" alt="">
+                <img src="img/products/Bethuel.jpg" alt="">
                 <div class="des">
                     <span>cake</span>
-                    <h5>Angel Chocolate Cake</h5>
+                    <h5>Chocolate Ganache Cake</h5>
                     <div class="star">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -44,7 +44,7 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                     </div>
-                    <h4>R100</h4>
+                    <h4>R210</h4>
                 </div>
                 <a href="#"><i class="fal fa-shopping-cart cart"></i></a>
 
@@ -382,4 +382,22 @@
     </footer>
 
     <script src ="script.js"></script>
+    <script>
+        const SignUp = document.getElementById("sign-up");
+        SignUp.addEventListener("click", () => {
+        alert(`Thank You For Signing Up. We will keep you informed.`);
+        });
+    </script>
+
+    <script>
+        function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let total = 0;
+        cart.forEach(item => {
+        total += item.quantity;
+    });
+    document.getElementById("cart-count").textContent = total;
+    }
+     updateCartCount();
+    </script>
 </body>
