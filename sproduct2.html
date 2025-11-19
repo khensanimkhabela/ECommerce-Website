@@ -38,15 +38,15 @@
         <h4>Peanut Butter Cookies</h4>
         <h2>R55</h2>
         <select id="sizeSelector">
-            <option>Select Size</option>
-            <option>Small</option>
-            <option>Medium</option>
-            <option>Large</option>
+            <option>Add-On</option>
+            <option>Roasted pecans</option>
+            <option>Jam</option>
+            <option>Mini Marshallows</option>
         </select>
         <input id="quantitySelector" type="number" value="1">
         <button class="normal" id="cartButton">Add To Cart</button>
         <h4>Product Details</h4>
-        <span>peanut butter cookies are the perfect balance of sweet, salty, and nutty. With a golden-brown exterior and a soft, melt-in-your-mouth center, each cookie is packed with rich peanut flavor and a hint of vanilla warmth. Ideal for snack time, gifting, or pairing with a hot drink.</span>
+        <span>Peanut butter cookies are the perfect balance of sweet, salty, and nutty. With a golden-brown exterior and a soft, melt-in-your-mouth center, each cookie is packed with rich peanut flavor and a hint of vanilla warmth. Ideal for snack time, gifting, or pairing with a hot drink.</span>
        </div>
        <div id="popupMessage" class="hidden">Product added to cart!</div> 
     </section>
@@ -132,11 +132,10 @@
             <h4>Sign Up For Newsletter</h4>
             <p>Get Email Updates about our latest shop and <span>special offers.</span></p>
         </div>
-        <div class="form">
-            <input type="text" placeholder="Your email address">
-            <button class="normal" id="sign-up">Sign Up</button>
-        </div>
-
+        <form id="newsletter-form" class="form">
+            <input type="email" id="newsletter-email" name="email" placeholder="Your email address" required>
+            <button type="submit" class="normal" id="sign-up">Sign Up</button>
+        </form>
     </section>
 
     <footer class="section-p1">
@@ -201,13 +200,14 @@
         let total = 0;
         cart.forEach(item => {
         total += item.quantity;
-    });
-    document.getElementById("cart-count").textContent = total;
-    }
-     updateCartCount();
+        });
+        document.getElementById("cart-count").textContent = total;
+        }
+        updateCartCount();
 
         document.getElementById("cartButton").addEventListener("click", function (){
         const product = {
+        id: "peanut-cookies",
         name: "Peanut Butter Cookies",
         price: 55,
         quantity: parseInt(document.getElementById("quantitySelector").value),
@@ -216,24 +216,55 @@
         };
 
         let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (!cart.some(item => item.id === product.id)) {
         cart.push(product);
         localStorage.setItem("cart", JSON.stringify(cart));
         updateCartCount();
 
+        const btn = document.getElementById("cartButton");
+        btn.textContent = "Added";
+        btn.disabled = true;
+        btn.style.backgroundColor = "#ccc";
+        } 
+
        //window.location.href= "cart.html"//
        });
+
+       window.addEventListener("DOMContentLoaded", function () {
+       let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (cart.some(item => item.id === "peanut-cookies")) {
+           const btn = document.getElementById("cartButton");
+           btn.textContent = "Added";
+           btn.disabled = true;
+           btn.style.backgroundColor = "#ccc";
+        }
+    });
+
     </script>
 
-    <script>
-        const SignUp = document.getElementById("sign-up");
-        SignUp.addEventListener("click", () => {
-        alert(`Thank You For Signing Up. We will keep you informed.`);
-        });
-    </script>
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script type="text/javascript">emailjs.init('s-h8N-c0RDYCvGRW4')</script>
+
+    <script src="email.js"></script>
 
     <script src="cart.js"></script>
+
     <script src="popup.js"></script>
+
     <script src="miniscreen.js"></script>
 
     <script src ="script.js"></script>
+
+    <script>
+        function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let total = 0;
+        cart.forEach(item => {
+        total += item.quantity;
+        });
+        document.getElementById("cart-count").textContent = total;
+        }
+        updateCartCount();
+    </script>
 </body>

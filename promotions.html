@@ -61,11 +61,10 @@
             <h4>Sign Up For Newsletter</h4>
             <p>Get Email Updates about our latest shop and <span>special offers.</span></p>
         </div>
-        <div class="form">
-            <input type="text" placeholder="Your email address">
-            <button class="normal">Sign Up</button>
-        </div>
-
+        <form id="newsletter-form" class="form">
+            <input type="email" id="newsletter-email" name="email" placeholder="Your email address" required>
+            <button type="submit" class="normal" id="sign-up">Sign Up</button>
+        </form>
     </section>
     
     <footer class="section-p1">
@@ -124,6 +123,15 @@
     </footer>
 
     <script src ="script.js"></script>
+
+    <script src="miniscreen.js"></script>
+
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script type="text/javascript">emailjs.init('s-h8N-c0RDYCvGRW4')</script>
+
+    <script src="email.js"></script>
+
     <script>
         function updateCartCount() {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];

@@ -132,11 +132,10 @@
             <h4>Sign Up For Newsletter</h4>
             <p>Get Email Updates about our latest shop and <span>special offers.</span></p>
         </div>
-        <div class="form">
-            <input type="text" placeholder="Your email address">
-            <button class="normal" id="sign-up">Sign Up</button>
-        </div>
-
+        <form id="newsletter-form" class="form">
+            <input type="email" id="newsletter-email" name="email" placeholder="Your email address" required>
+            <button type="submit" class="normal" id="sign-up">Sign Up</button>
+        </form>
     </section>
 
     <footer class="section-p1">
@@ -200,39 +199,72 @@
         let total = 0;
         cart.forEach(item => {
         total += item.quantity;
-    });
-    document.getElementById("cart-count").textContent = total;
-    }
-     updateCartCount();
+        });
+        document.getElementById("cart-count").textContent = total;
+        }
+        updateCartCount();
 
-    document.getElementById("cartButton").addEventListener("click", function (){
-   const product = {
-    name: "New York-Style Cheesecake",
-    price: 200,
-    quantity: parseInt(document.getElementById("quantitySelector").value),
-    size: document.getElementById("sizeSelector").value,
-    image: "img/products/cheesecake.jpg" 
-   };
+        document.getElementById("cartButton").addEventListener("click", function (){
+     const product = {
+     id: "nys-cheesecake", 
+     name: "New York-Style Cheesecake",
+     price: 200,
+     quantity: parseInt(document.getElementById("quantitySelector").value),
+     size: document.getElementById("sizeSelector").value,
+     image: "img/products/cheesecake.jpg" 
+     };
 
-   let cart = JSON.parse(localStorage.getItem("cart")) || [];
-   cart.push(product);
-   localStorage.setItem("cart", JSON.stringify(cart));
-   updateCartCount();
+       let cart = JSON.parse(localStorage.getItem("cart")) || [];
+       if (!cart.some(item => item.id === product.id)){
+       cart.push(product);
+       localStorage.setItem("cart", JSON.stringify(cart));
+       updateCartCount();
 
-   //window.location.href= "cart.html"//
-});
-    </script>
+        const btn = document.getElementById("cartButton");
+        btn.textContent = "Added";
+        btn.disabled = true;
+        btn.style.backgroundColor = "#ccc";
+         }
 
-    <script>
-        const SignUp = document.getElementById("sign-up");
-        SignUp.addEventListener("click", () => {
-        alert(`Thank You For Signing Up. We will keep you informed.`);
+        //window.location.href= "cart.html"//
+        });
+
+        window.addEventListener("DOMContentLoaded", function () {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        if (cart.some(item => item.id === "nys-cheesecake")) {
+        const btn = document.getElementById("cartButton");
+        btn.textContent = "Added";
+        btn.disabled = true;
+        btn.style.backgroundColor = "#ccc";
+        }
         });
     </script>
+
+    <script type="text/javascript"src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script type="text/javascript">emailjs.init('s-h8N-c0RDYCvGRW4')</script>
+
+    <script src="email.js"></script>
+
+    <script src="miniscreen.js"></script>
 
     <script src="cart.js"></script>
 
     <script src="popup.js"></script>
 
     <script src ="script.js"></script>
+
+    <script>
+        function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let total = 0;
+        cart.forEach(item => {
+        total += item.quantity;
+        });
+        document.getElementById("cart-count").textContent = total;
+        }
+        updateCartCount();
+    </script>
+
+
 </body>

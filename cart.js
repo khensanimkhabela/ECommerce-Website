@@ -14,7 +14,8 @@ window.addEventListener("DOMContentLoaded", () => {
         "SAVE50": 0.50,  // 50% off
         "KHENSANI": 0.35,  //35% off
         "BETHU": 0.20, //20% off
-        "STUDENT": 0.05 //5% off
+        "STUDENT": 0.05, //5% off
+        "EMPLOYEE": 0.15 //15% off
         
     };
 
@@ -39,11 +40,16 @@ window.addEventListener("DOMContentLoaded", () => {
             const itemTotal = item.price * item.quantity;
             subtotal += itemTotal;
 
+            let sizeText = "";
+            if (item.size && item.size !== "Select Size" && item.size !== "Toppings" && item.size !== "Add-Ons" && item.size !== "Options") {
+            sizeText = ` (${item.size})`;
+    }
+
             const row = document.createElement("tr");
             row.innerHTML = `
                 <td><a href="#" class="remove" data-index="${index}"><i class="far fa-times-circle"></i></a></td>
                 <td><img src="${item.image}" alt="${item.name}"></td>
-                <td>${item.name}</td>
+                <td>${item.name}${sizeText}</td>
                 <td>R${item.price}</td>
                 <td><input type="number" min="1" value="${item.quantity}" data-index="${index}"></td>
                 <td>R${itemTotal}</td>

@@ -370,31 +370,15 @@
         </div>  
     </section>
 
-    <section id="banner3">
-        <div class="banner-box">
-            <h2>BAKING CLASSES</h2>
-            <h3>Learn. Bake. Repeat.</h3>
-        </div>
-        <div class="banner-box banner-box2">
-            <h2>BREAD SUBSCRIPTIONS</h2>
-            <h3>Fresh loaves delivered weekly</h3>
-        </div>
-        <div class="banner-box banner-box3" onclick="window.location.href='gallery.html';">
-            <h2>COOKIES</h2>
-            <h3>Fresh Designs, Bold Flavors</h3>
-        </div>
-    </section>
-
     <section id="newsletter" class="section-p1 section-m1" >
         <div class="newstext">
             <h4>Sign Up For Newsletter</h4>
             <p>Get Email Updates about our latest shop and <span>special offers.</span></p>
         </div>
-        <div class="form">
-            <input type="text" placeholder="Your email address">
-            <button class="normal" id="sign-up">Sign Up</button>
-        </div>
-
+        <form id="newsletter-form" class="form">
+            <input type="email" id="newsletter-email" name="email" placeholder="Your email address" required>
+            <button type="submit" class="normal" id="sign-up">Sign Up</button>
+        </form>
     </section>
 
     <footer class="section-p1">
@@ -428,10 +412,10 @@
         <div class="col">
             <h4>My Account</h4>
             <a href="#">Sign In</a>
-            <a href="#">View Cart</a>
+            <a href="cart.html">View Cart</a>
             <a href="#">My Wishlist</a>
             <a href="#">Track My Order</a>
-            <a href="#">Help</a>
+            <a href="support.html">Help</a>
         </div>
 
         <div class=" col install">
@@ -454,24 +438,29 @@
 
     <script src="miniscreen.js"></script>
     <script src ="script.js"></script>
+     
+    <script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
-    <script>
-        const SignUp = document.getElementById("sign-up");
-        SignUp.addEventListener("click", () => {
-        alert(`Thank You For Signing Up. We will keep you informed.`);
-        });
-    </script>
+<script type="text/javascript">
+  emailjs.init('s-h8N-c0RDYCvGRW4')
+</script>
 
-    <script>
+<script src="email.js"></script>
+
+<script>
         function updateCartCount() {
         const cart = JSON.parse(localStorage.getItem("cart")) || [];
         let total = 0;
         cart.forEach(item => {
         total += item.quantity;
-    });
-    document.getElementById("cart-count").textContent = total;
-    }
-     updateCartCount();
+        });
+        document.getElementById("cart-count").textContent = total;
+        }
+        updateCartCount();
     </script>
+
+
+
 </body>
 </html>
