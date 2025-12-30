@@ -158,13 +158,6 @@ body{
 
 }
 
-.dropdown-menu{
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .4s ease-out;
-}
-
-
 #mobile {
     display: none;
     align-items: center;
@@ -1202,7 +1195,16 @@ body.support{
   z-index: 1000;
 }
 
+#about-app a:link{
+    text-decoration: none;
+    text-decoration-color: black;
+}
 
+#about-app h1 a:link{
+    text-decoration: none;
+    text-decoration-color: black;
+    color: black;
+}
 
 
 
@@ -1267,6 +1269,7 @@ body.support{
     height: 70vh;
     padding: 0 80px;
     background-position: top 30% right 30%;
+    }
 
     #feature {
         justify-content: center;
@@ -1284,9 +1287,15 @@ body.support{
         width: 28%;
     }
 
+    #product1 .pro-container{
+        margin: 10px 45px;
+        justify-content: space-between;
+    }
+
+    
+
 
 
 }
 
     
-}
