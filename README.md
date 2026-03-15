@@ -63,7 +63,7 @@ Contributions, bug reports, and improvements are welcome — please open an issu
 
 ## 📄 License
 
-This project currently has **no license specified**. Add a `LICENSE` file (for example, MIT) if you want to allow reuse.
+This project currently has **no license specified**. 
 
 ---
 
